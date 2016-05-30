@@ -16,9 +16,9 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 /**
- * Created by yaoyuan on 16/5/28.
+ * Created by Syman-Z on 2016/2/25.
  */
-public class TestEncoder extends Activity{
+public class TestEncoder extends Activity {
     EditText textContent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,8 @@ public class TestEncoder extends Activity{
                 try {
                     String contentString = textContent.getText().toString();
                     if (!contentString.equals("")) {
-                        BitMatrix matrix = new MultiFormatWriter().encode(contentString,BarcodeFormat.QR_CODE, 300, 300);
+                        BitMatrix matrix = new MultiFormatWriter().encode(contentString,
+                                BarcodeFormat.QR_CODE, 300, 300);
                         int width = matrix.getWidth();
                         int height = matrix.getHeight();
                         int[] pixels = new int[width * height];
@@ -52,21 +53,20 @@ public class TestEncoder extends Activity{
                                 .setIcon(android.R.drawable.ic_dialog_info)
                                 .setView(image1)
                                 .setPositiveButton("Confirm", new
-                                        DialogInterface.OnClickListener() {
+                                        DialogInterface.OnClickListener(){
                                             @Override
-                                            public void onClick(DialogInterface dialog,int which){
-                                                                dialog.dismiss();
-                                            }
-                                        })
+                                            public void onClick(DialogInterface dialog,int which) {
+                                                dialog.dismiss();
+                                            } })
                                 .show();
+// Bitmap qrCodeBitmap =
+//                        EncodingHandler.createQRCode(contentString, 350);
+// qrImgImageView.setImageBitmap(qrCodeBitmap);
                     }else {
                         Toast.makeText(TestEncoder.this, "Text can not be empty",
-                                Toast.LENGTH_SHORT).show();
-                    }
+                                Toast.LENGTH_SHORT).show(); }
                 } catch (WriterException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+// TODO Auto-generated catch block e.printStackTrace();
                 } }
         }); }
 }
-
